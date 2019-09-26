@@ -1,27 +1,25 @@
-<h1><%= @recipe["title"] %></h1>
-
-<h3>Chef: <%= @recipe["chef"] %></h3>
-<h5>Prep Time: <%= @recipe["formatted"]["prep_time"] %></h5>
-<h4>Ingredients: </h4>
-<% @recipe["formatted"]["ingredients"].each do |ingredient| %>
-<ul>
-  <li><%= ingredient %></li>
-</ul>
-<% end %>
-
-
-<h4>Directions </h4>
-<ol>
- <%= @recipe["formatted"]["directions"].each do |direction| %>
-  <li><%= direction %></li>
-<% end %>
-</ol>
-
-<div>
-  <a href="/client/recipes/<%= @recipe['id'] %>/edit">Edit</a>
-  <%= form_tag "/client/recipes/#{ @recipe['id']}", method: :delete do %>
-    <input type="submit" value="Destroy">
-  <% end %>
-</div>
-
-<img src="<%= @recipe["image_url"] %>">
+<div class="row">
+  <div class="col-md-6">
+    <div class="jumbotron">
+      <h1 class="display-4"><%= @recipe["title"] %></h1>
+      <p class="lead">Chef: <%= @recipe["chef"] %></p>
+      <p class="lead">Prep Time: <%= @recipe["formatted"]["prep_time"] %></p>
+      <hr class="my-4">
+      <h3>Ingredients</h3>
+      <ul>
+        <h3>Directions: </h3>
+              <ol>
+                <% @recipe["formatted"]["directions"].each do |direction| %>
+                  <li><%= direction %></li>
+                <% end %>
+              </ol>
+              <a class="btn btn-primary" href="/client/recipes/<%= @recipe['id'] %>/edit">Edit</a>
+                    <%= form_tag "/client/recipes/#{ @recipe['id'] }", method: :delete do %>
+                      <input class="btn btn-primary" type="submit" value="Destroy">
+                    <% end %>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <img class="img-fluid" src="<%= @recipe["image_url"] %>">
+                </div>
+              </div>
